@@ -1,0 +1,1716 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linguist Toolkit - FREE Version</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #0F2440;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      overflow-x: hidden;
+    }
+
+    .page {
+      display: none;
+      min-height: 100%;
+      width: 100%;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 16px 0;
+    }
+
+    .navbar .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #667eea;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #0F2440;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      color: #667eea;
+    }
+
+    .version-badge {
+      background: linear-gradient(135deg, #48bb78, #38a169);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+      width: 100%;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 24px;
+      margin-bottom: 40px;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 16px 32px;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: #667eea;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #667eea;
+      border: 2px solid #667eea;
+    }
+
+    .btn-outline:hover {
+      background: #667eea;
+      color: white;
+    }
+
+    /* Tools Grid */
+    .tools-section {
+      background: #f8f9fa;
+      padding: 80px 0;
+      width: 100%;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #0F2440;
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      font-size: 18px;
+      color: #666;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .tool-card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 2px solid transparent;
+      position: relative;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
+      border-color: #667eea;
+    }
+
+    .tool-card.locked {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .tool-card.locked:hover {
+      transform: translateY(0);
+    }
+
+    .lock-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .lock-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+
+    .lock-overlay p {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .tool-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .tool-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0F2440;
+      margin-bottom: 12px;
+    }
+
+    .tool-card p {
+      color: #666;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .tool-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #48bb78, #38a169);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+
+    /* Tool Page Styles */
+    .tool-page-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+      width: 100%;
+    }
+
+    .tool-page-header h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .tool-page-header p {
+      font-size: 20px;
+      opacity: 0.95;
+    }
+
+    .back-button {
+      margin: 32px 0;
+    }
+
+    .how-to-section {
+      background: white;
+      padding: 32px;
+      border-radius: 16px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .how-to-section h2 {
+      font-size: 28px;
+      color: #0F2440;
+      margin-bottom: 20px;
+    }
+
+    .how-to-section ol {
+      margin-left: 24px;
+      line-height: 2;
+      font-size: 16px;
+    }
+
+    .generator-section {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 32px;
+    }
+
+    .generator-section h2 {
+      font-size: 28px;
+      color: #0F2440;
+      margin-bottom: 32px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: #0F2440;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .checkbox-group label {
+      margin-bottom: 0;
+      cursor: pointer;
+    }
+
+    .output-box {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 32px;
+      display: none;
+    }
+
+    .output-box.visible {
+      display: block;
+    }
+
+    .output-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .output-header h4 {
+      font-size: 20px;
+      color: #0F2440;
+    }
+
+    .output-content {
+      background: white;
+      padding: 24px;
+      border-radius: 8px;
+      border: 2px solid #e0e0e0;
+      white-space: pre-wrap;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #0F2440;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+
+    .output-tip {
+      margin-top: 16px;
+      padding: 16px;
+      background: #fff3cd;
+      border-radius: 8px;
+      color: #856404;
+      font-size: 14px;
+    }
+
+    /* Upgrade Banner */
+    .upgrade-banner {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #0F2440;
+      padding: 24px;
+      border-radius: 16px;
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    .upgrade-banner h3 {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .upgrade-banner p {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #0F2440;
+      color: white;
+      padding: 48px 0 24px;
+      margin-top: 80px;
+      width: 100%;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-mission {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .footer-contact a {
+      color: #667eea;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-contact a:hover {
+      color: #764ba2;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 48px;
+      border-radius: 24px;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-content h2 {
+      font-size: 32px;
+      color: #0F2440;
+      margin-bottom: 16px;
+    }
+
+    .modal-content p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+
+      .generator-section {
+        padding: 24px;
+      }
+
+      .modal-content {
+        padding: 32px 24px;
+      }
+    }
+
+    .hint-text {
+      font-size: 14px;
+      color: #666;
+      font-style: italic;
+      margin-top: 4px;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div style="width: 100%; height: 100%;"><!-- HOME PAGE -->
+   <div id="page-home" class="page active"><!-- Navigation -->
+    <nav class="navbar">
+     <div class="container">
+      <div class="logo" id="logo">
+       Cikgu Munirah
+      </div>
+      <ul class="nav-links">
+       <li><a id="nav-home">Home</a></li>
+       <li><a id="nav-tools">Tools</a></li>
+       <li><span class="version-badge">FREE</span></li>
+      </ul>
+     </div>
+    </nav><!-- Hero Section -->
+    <section class="hero">
+     <div class="container">
+      <h1 id="hero-title">Free Linguist Toolkit</h1>
+      <p id="hero-subtitle">Your first step to becoming an independent freelance linguist.<br>
+       Built from real freelance experience.</p>
+      <div class="cta-buttons"><button class="btn btn-primary" id="hero-cta-free">Try Free Tools</button> <button class="btn btn-secondary" id="hero-cta-contact">Get Support</button>
+      </div>
+     </div>
+    </section><!-- Tools Section -->
+    <section class="tools-section">
+     <div class="container">
+      <div class="section-header">
+       <h2>Professional Tools for Linguists</h2>
+       <p>Start with 5 free essential tools</p>
+      </div>
+      <div class="tools-grid"><!-- Rate Calculator - FREE -->
+       <div class="tool-card" onclick="navigateTo('rate-calculator')">
+        <div class="tool-icon">
+         💰
+        </div>
+        <h3>Rate Calculator</h3>
+        <p>Calculate competitive rates based on your experience, service type, and market standards</p><span class="tool-badge">Free</span>
+       </div><!-- Pitch Generator - FREE -->
+       <div class="tool-card" onclick="navigateTo('pitch')">
+        <div class="tool-icon">
+         ✉️
+        </div>
+        <h3>Pitch Generator</h3>
+        <p>Create compelling pitches for different platforms and client types</p><span class="tool-badge">Free</span>
+       </div><!-- Follow-Up Messages - LOCKED -->
+       <div class="tool-card locked" onclick="showUpgradeMessage('Follow-Up Messages')">
+        <div class="tool-icon">
+         📬
+        </div>
+        <h3>Follow-Up Messages</h3>
+        <p>Professional templates for following up with clients and prospects</p>
+        <div class="lock-overlay">
+         <div class="lock-icon">
+          🔒
+         </div>
+         <p>BASIC/PRO</p>
+        </div>
+       </div><!-- Client Tracker - LOCKED -->
+       <div class="tool-card locked" onclick="showUpgradeMessage('Client Tracker')">
+        <div class="tool-icon">
+         👥
+        </div>
+        <h3>Client Tracker</h3>
+        <p>Keep track of your clients, projects, and communication history</p>
+        <div class="lock-overlay">
+         <div class="lock-icon">
+          🔒
+         </div>
+         <p>BASIC/PRO</p>
+        </div>
+       </div><!-- Cover Letter Generator - LOCKED -->
+       <div class="tool-card locked" onclick="showUpgradeMessage('Cover Letter Generator')">
+        <div class="tool-icon">
+         📄
+        </div>
+        <h3>Cover Letter Generator</h3>
+        <p>Generate tailored cover letters for language professional positions</p>
+        <div class="lock-overlay">
+         <div class="lock-icon">
+          🔒
+         </div>
+         <p>BASIC/PRO</p>
+        </div>
+       </div><!-- Portfolio Builder - LOCKED -->
+       <div class="tool-card locked" onclick="showUpgradeMessage('Portfolio Builder')">
+        <div class="tool-icon">
+         🎨
+        </div>
+        <h3>Portfolio Builder</h3>
+        <p>Learn how to build an impressive translation portfolio that wins clients</p>
+        <div class="lock-overlay">
+         <div class="lock-icon">
+          🔒
+         </div>
+         <p>BASIC/PRO</p>
+        </div>
+       </div><!-- Invoice Generator - LOCKED -->
+       <div class="tool-card locked" onclick="showUpgradeMessage('Invoice Generator')">
+        <div class="tool-icon">
+         🧾
+        </div>
+        <h3>Invoice Generator</h3>
+        <p>Create professional invoices for your translation services</p>
+        <div class="lock-overlay">
+         <div class="lock-icon">
+          🔒
+         </div>
+         <p>BASIC/PRO</p>
+        </div>
+       </div><!-- Earning Potential Dashboard - LOCKED -->
+       <div class="tool-card locked" onclick="showUpgradeMessage('Earning Potential Dashboard')">
+        <div class="tool-icon">
+         📊
+        </div>
+        <h3>Earning Potential</h3>
+        <p>Visualize and project your earning potential across specializations</p>
+        <div class="lock-overlay">
+         <div class="lock-icon">
+          🔒
+         </div>
+         <p>BASIC/PRO</p>
+        </div>
+       </div><!-- Basic Marketing Guide - FREE -->
+       <div class="tool-card" onclick="navigateTo('marketing-guide')">
+        <div class="tool-icon">
+         📢
+        </div>
+        <h3>Basic Marketing Guide</h3>
+        <p>Learn essential marketing strategies to grow your freelance business</p><span class="tool-badge">Free</span>
+       </div><!-- Worksheet - FREE -->
+       <div class="tool-card" onclick="navigateTo('worksheet')">
+        <div class="tool-icon">
+         📝
+        </div>
+        <h3>Worksheet</h3>
+        <p>Downloadable worksheets for business planning and goal setting</p><span class="tool-badge">Free</span>
+       </div><!-- Resume Builder - LOCKED -->
+       <div class="tool-card locked" onclick="showUpgradeMessage('Resume Builder')">
+        <div class="tool-icon">
+         📋
+        </div>
+        <h3>Resume Builder</h3>
+        <p>Design a standout resume highlighting your language skills</p>
+        <div class="lock-overlay">
+         <div class="lock-icon">
+          🔒
+         </div>
+         <p>PRO ONLY</p>
+        </div>
+       </div><!-- Upskilling Dashboard - LOCKED -->
+       <div class="tool-card locked" onclick="showUpgradeMessage('Upskilling Dashboard')">
+        <div class="tool-icon">
+         📚
+        </div>
+        <h3>Upskilling Dashboard</h3>
+        <p>Track your professional development and identify growth opportunities</p>
+        <div class="lock-overlay">
+         <div class="lock-icon">
+          🔒
+         </div>
+         <p>PRO ONLY</p>
+        </div>
+       </div>
+      </div><!-- Upgrade Banner -->
+      <div class="upgrade-banner">
+       <h3>🚀 Unlock All Features</h3>
+       <p>Upgrade to BASIC or PRO to access all tools and features</p><button class="btn btn-primary" onclick="showUpgradeMessage('Full Toolkit')">View Upgrade Options</button>
+      </div>
+     </div>
+    </section><!-- Footer -->
+    <footer class="footer">
+     <div class="container">
+      <div class="footer-content">
+       <div class="footer-mission">
+        Empowering linguists worldwide 🌍
+       </div>
+       <div class="footer-contact"><a href="mailto:contact@linguisttoolkit.com">contact@linguisttoolkit.com</a>
+       </div>
+      </div>
+      <div class="footer-bottom">
+       © 2024 Linguist Toolkit - FREE Version. All rights reserved.
+      </div>
+     </div>
+    </footer>
+   </div><!-- RATE CALCULATOR PAGE -->
+   <div id="page-rate-calculator" class="page">
+    <div class="tool-page-header">
+     <div class="container">
+      <h1>Rate Calculator</h1>
+      <p>Calculate competitive rates based on industry standards</p>
+     </div>
+    </div>
+    <div class="container"><button class="btn btn-outline back-button" onclick="navigateTo('home')">← Back to Tools</button>
+     <div class="how-to-section">
+      <h2>How to Use</h2>
+      <ol>
+       <li>Select your service type (translation, interpretation, etc.)</li>
+       <li>Choose your experience level</li>
+       <li>Add any modifiers (rush job, specialized field)</li>
+       <li>Get your recommended rate range based on Malaysian market standards</li>
+      </ol>
+     </div>
+     <div class="generator-section">
+      <h2>Calculate Your Rate</h2>
+      <form id="rate-calculator-form">
+       <div class="form-group"><label for="service-type">Service Type</label> <select id="service-type" required> <option value="">Select a service...</option> <option value="translation">Translation</option> <option value="interpretation">Interpretation</option> <option value="proofreading">Proofreading/Editing</option> <option value="subtitling">Subtitling/Captioning</option> <option value="voiceover">Voice Over</option> <option value="transcription">Transcription</option> </select>
+       </div>
+       <div class="form-group"><label for="experience-level">Experience Level</label> <select id="experience-level" required> <option value="">Select your level...</option> <option value="beginner">Beginner (0-2 years)</option> <option value="intermediate">Intermediate (3-5 years)</option> <option value="expert">Expert (5+ years)</option> </select>
+       </div>
+       <div class="form-group" id="project-size-group" style="display: none;"><label for="project-size">Project Size (Optional)</label> <input type="number" id="project-size" placeholder="Enter project size" min="0">
+        <div class="hint-text" id="size-hint">
+         Enter the project size for a quote
+        </div>
+       </div>
+       <div class="form-group"><label for="currency">Currency</label> <select id="currency"> <option value="MYR">MYR (RM)</option> <option value="USD">USD ($)</option> </select>
+       </div>
+       <div class="checkbox-group"><input type="checkbox" id="rush-job"> <label for="rush-job">Rush Job (+50%)</label>
+       </div>
+       <div class="checkbox-group"><input type="checkbox" id="specialized"> <label for="specialized">Specialized Field (+30%)</label>
+       </div><button type="submit" class="btn btn-primary">Calculate Rate</button>
+       <div id="rate-output" class="output-box">
+        <div class="output-header">
+         <h4>Your Recommended Rate</h4>
+        </div>
+        <div class="output-content" id="rate-results"></div>
+        <p class="output-tip">💡 Tip: These rates are based on Malaysian market standards (ITBM, MTA) and industry research.</p>
+       </div>
+      </form>
+     </div>
+    </div>
+   </div><!-- PITCH GENERATOR PAGE -->
+   <div id="page-pitch" class="page">
+    <div class="tool-page-header">
+     <div class="container">
+      <h1>Pitch Generator</h1>
+      <p>Create compelling pitches tailored to your target clients</p>
+     </div>
+    </div>
+    <div class="container"><button class="btn btn-outline back-button" onclick="navigateTo('home')">← Back to Tools</button>
+     <div class="how-to-section">
+      <h2>How to Use</h2>
+      <ol>
+       <li>Fill in your professional details</li>
+       <li>Enter information about your target client</li>
+       <li>Select the platform where you'll send the pitch</li>
+       <li>Click "Generate Pitch" to create your customized message</li>
+      </ol>
+     </div>
+     <div class="generator-section">
+      <h2>Create Your Pitch</h2>
+      <form id="pitch-form">
+       <h3 style="margin-top: 0; margin-bottom: 20px; font-size: 20px;">Your Information</h3>
+       <div class="form-group"><label for="your-name">Your Name</label> <input type="text" id="your-name" placeholder="Your Name" required>
+       </div>
+       <div class="form-group"><label for="your-service">Your Service</label> <select id="your-service" required> <option value="">Select your service...</option> <option value="Translation">Translation</option> <option value="Interpretation">Interpretation</option> <option value="Proofreading">Proofreading</option> <option value="Subtitling">Subtitling</option> <option value="Voice Over">Voice Over</option> <option value="Transcription">Transcription</option> </select>
+       </div>
+       <div class="form-group"><label for="your-experience">Years of Experience</label> <input type="number" id="your-experience" placeholder="3" min="0" required>
+       </div>
+       <h3 style="margin-top: 32px; margin-bottom: 20px; font-size: 20px;">Client Information</h3>
+       <div class="form-group"><label for="client-name">Client Name</label> <input type="text" id="client-name" placeholder="Company or Person Name" required>
+       </div>
+       <div class="form-group"><label for="client-industry">Client Industry</label> <input type="text" id="client-industry" placeholder="e.g., Healthcare, Technology, Legal" required>
+       </div>
+       <div class="form-group"><label for="platform">Platform</label> <select id="platform" required> <option value="">Where will you send this?</option> <option value="whatsapp">WhatsApp</option> <option value="email">Email</option> <option value="linkedin">LinkedIn</option> <option value="upwork">Upwork/Freelance Platform</option> <option value="social">Social Media (Instagram/Facebook)</option> </select>
+       </div>
+       <div class="form-group"><label for="unique-value">Your Unique Value (Optional)</label> <textarea id="unique-value" placeholder="What makes you different? E.g., Certified by XYZ, Specialized in medical translation, Native speaker..."></textarea>
+       </div><button type="submit" class="btn btn-primary">Generate Pitch</button>
+       <div id="pitch-output" class="output-box">
+        <div class="output-header">
+         <h4>Your Personalized Pitch</h4><button type="button" class="btn btn-secondary" onclick="copyToClipboard('pitch-text')">Copy</button>
+        </div>
+        <div class="output-content" id="pitch-text"></div>
+        <p class="output-tip">💡 Tip: Personalize this further by researching the client's recent projects or achievements!</p>
+       </div>
+      </form>
+     </div>
+    </div>
+   </div><!-- FOLLOW-UP MESSAGES PAGE -->
+   <div id="page-followup" class="page">
+    <div class="tool-page-header">
+     <div class="container">
+      <h1>Follow-Up Messages</h1>
+      <p>Professional templates for client communication</p>
+     </div>
+    </div>
+    <div class="container"><button class="btn btn-outline back-button" onclick="navigateTo('home')">← Back to Tools</button>
+     <div class="how-to-section">
+      <h2>How to Use</h2>
+      <ol>
+       <li>Enter the client's name</li>
+       <li>Select the type of follow-up message you need</li>
+       <li>Add any specific context (optional)</li>
+       <li>Click "Generate Message" to create your follow-up</li>
+      </ol>
+     </div>
+     <div class="generator-section">
+      <h2>Create Follow-Up Message</h2>
+      <div class="form-group"><label for="fu-client">Client Name</label> <input type="text" id="fu-client" placeholder="Client Name">
+      </div>
+      <div class="form-group"><label for="fu-type">Message Type</label> <select id="fu-type"> <option value="proposal">Following Up on Proposal</option> <option value="completion">Project Completion Thank You</option> <option value="checkin">General Check-In</option> <option value="invoice">Payment Reminder</option> </select>
+      </div>
+      <div class="form-group"><label for="fu-context">Additional Context (Optional)</label> <textarea id="fu-context" placeholder="Any specific details you want to mention..."></textarea>
+      </div><button class="btn btn-primary" onclick="generateFollowUp()">Generate Message</button>
+      <div id="fu-output" class="output-box">
+       <div class="output-header">
+        <h4>Your Follow-Up Message</h4><button class="btn btn-secondary" onclick="copyToClipboard('fu-result')">Copy</button>
+       </div>
+       <div class="output-content" id="fu-result"></div>
+       <p class="output-tip">💡 Tip: Always personalize with specific project details!</p>
+      </div>
+     </div>
+    </div>
+   </div><!-- BASIC MARKETING GUIDE PAGE -->
+   <div id="page-marketing-guide" class="page">
+    <div class="tool-page-header">
+     <div class="container">
+      <h1>Basic Marketing Guide</h1>
+      <p>Essential strategies to grow your freelance linguist business</p>
+     </div>
+    </div>
+    <div class="container"><button class="btn btn-outline back-button" onclick="navigateTo('home')">← Back to Tools</button>
+     <div class="generator-section">
+      <h2>📢 Marketing Fundamentals for Linguists</h2>
+      <div style="background: #E8F1FF; padding: 32px; border-radius: 16px; margin-bottom: 32px;">
+       <h3 style="color: #0F2440; font-size: 24px; margin-bottom: 20px;">🎯 Finding Your Niche</h3>
+       <p style="line-height: 1.8; color: #0F2440; margin-bottom: 16px;"><strong>Why specialize?</strong> Clients pay more for specialists. Choose a niche based on your interests, background, or market demand.</p>
+       <ul style="margin-left: 24px; line-height: 2; color: #0F2440;">
+        <li><strong>Medical/Healthcare:</strong> High-paying, requires certification</li>
+        <li><strong>Legal:</strong> Complex terminology, premium rates</li>
+        <li><strong>Technical/IT:</strong> Growing demand, good rates</li>
+        <li><strong>Marketing/Creative:</strong> Transcreation skills valued</li>
+        <li><strong>Financial:</strong> Specialized knowledge required</li>
+       </ul>
+      </div>
+      <div style="background: #DFF5EC; padding: 32px; border-radius: 16px; margin-bottom: 32px;">
+       <h3 style="color: #0F2440; font-size: 24px; margin-bottom: 20px;">💼 Building Your Online Presence</h3>
+       <h4 style="color: #0F2440; margin-top: 24px; margin-bottom: 12px;">LinkedIn Strategy</h4>
+       <ul style="margin-left: 24px; line-height: 2; color: #0F2440;">
+        <li>Complete profile with professional photo</li>
+        <li>Use keywords: "translator", "linguist", your language pairs</li>
+        <li>Post weekly: industry insights, tips, case studies</li>
+        <li>Engage with potential clients' content</li>
+        <li>Join translation groups and participate actively</li>
+       </ul>
+       <h4 style="color: #0F2440; margin-top: 24px; margin-bottom: 12px;">Create a Simple Portfolio Website</h4>
+       <ul style="margin-left: 24px; line-height: 2; color: #0F2440;">
+        <li>Use free tools: Wix, WordPress, Carrd</li>
+        <li>Include: services, rates (optional), samples, testimonials</li>
+        <li>Clear call-to-action: "Get a Quote" button</li>
+        <li>Contact form for easy inquiries</li>
+       </ul>
+      </div>
+      <div style="background: #FFF4E6; padding: 32px; border-radius: 16px; margin-bottom: 32px;">
+       <h3 style="color: #0F2440; font-size: 24px; margin-bottom: 20px;">🔍 Where to Find Clients</h3>
+       <h4 style="color: #0F2440; margin-top: 24px; margin-bottom: 12px;">Direct Clients (Higher Rates)</h4>
+       <ul style="margin-left: 24px; line-height: 2; color: #0F2440;">
+        <li><strong>Cold outreach:</strong> Email businesses that need your language pair</li>
+        <li><strong>Networking:</strong> Join local business chambers, expat groups</li>
+        <li><strong>Referrals:</strong> Ask satisfied clients for introductions</li>
+        <li><strong>Social media:</strong> Share valuable content, engage with target audience</li>
+       </ul>
+       <h4 style="color: #0F2440; margin-top: 24px; margin-bottom: 12px;">Translation Agencies</h4>
+       <ul style="margin-left: 24px; line-height: 2; color: #0F2440;">
+        <li><strong>ProZ.com:</strong> Create profile, bid on jobs</li>
+        <li><strong>TranslatorsCafe:</strong> Free directory listing</li>
+        <li><strong>Local agencies:</strong> Google "translation agency [your city]"</li>
+        <li><strong>Apply directly:</strong> Send CV to 20-30 agencies</li>
+       </ul>
+       <h4 style="color: #0F2440; margin-top: 24px; margin-bottom: 12px;">Freelance Platforms</h4>
+       <ul style="margin-left: 24px; line-height: 2; color: #0F2440;">
+        <li><strong>Upwork:</strong> Competitive but consistent work</li>
+        <li><strong>Fiverr:</strong> Good for building portfolio</li>
+        <li><strong>Gengo/One Hour Translation:</strong> Entry-level opportunities</li>
+       </ul>
+      </div>
+      <div style="background: #FDE8F3; padding: 32px; border-radius: 16px; margin-bottom: 32px;">
+       <h3 style="color: #0F2440; font-size: 24px; margin-bottom: 20px;">✉️ Email Marketing Basics</h3>
+       <h4 style="color: #0F2440; margin-top: 24px; margin-bottom: 12px;">Building Your Email List</h4>
+       <ul style="margin-left: 24px; line-height: 2; color: #0F2440;">
+        <li>Collect emails from networking events</li>
+        <li>Add signup form to your website</li>
+        <li>Offer free resource: "10 Translation Tips" PDF</li>
+        <li>Use free tools: Mailchimp (free up to 500 subscribers)</li>
+       </ul>
+       <h4 style="color: #0F2440; margin-top: 24px; margin-bottom: 12px;">What to Send</h4>
+       <ul style="margin-left: 24px; line-height: 2; color: #0F2440;">
+        <li><strong>Monthly newsletter:</strong> Industry news, tips, special offers</li>
+        <li><strong>Case studies:</strong> Highlight successful projects</li>
+        <li><strong>Seasonal promos:</strong> "End-of-year translation packages"</li>
+        <li><strong>Stay top-of-mind:</strong> Send at least quarterly</li>
+       </ul>
+      </div>
+      <div style="background: #E8E0FF; padding: 32px; border-radius: 16px; margin-bottom: 32px;">
+       <h3 style="color: #0F2440; font-size: 24px; margin-bottom: 20px;">📱 Social Media Strategy</h3>
+       <h4 style="color: #0F2440; margin-top: 24px; margin-bottom: 12px;">Content Ideas</h4>
+       <ul style="margin-left: 24px; line-height: 2; color: #0F2440;">
+        <li><strong>Translation fails:</strong> Funny mistranslations (people love these!)</li>
+        <li><strong>Behind the scenes:</strong> Your workspace, translation process</li>
+        <li><strong>Language tips:</strong> Quick lessons in your language pairs</li>
+        <li><strong>Industry insights:</strong> Share translation news</li>
+        <li><strong>Client testimonials:</strong> Success stories (with permission)</li>
+       </ul>
+       <h4 style="color: #0F2440; margin-top: 24px; margin-bottom: 12px;">Posting Schedule</h4>
+       <ul style="margin-left: 24px; line-height: 2; color: #0F2440;">
+        <li><strong>LinkedIn:</strong> 3-5 times per week (professional focus)</li>
+        <li><strong>Instagram:</strong> Daily (visual, behind-the-scenes)</li>
+        <li><strong>Facebook:</strong> 2-3 times per week (mix of content)</li>
+        <li><strong>Use hashtags:</strong> #translation #linguist #yourlanguages</li>
+       </ul>
+      </div>
+      <div style="background: #fff3cd; padding: 32px; border-radius: 16px;">
+       <h3 style="color: #0F2440; font-size: 24px; margin-bottom: 20px;">💡 Quick Marketing Action Plan</h3>
+       <h4 style="color: #0F2440; margin-bottom: 16px;">Week 1: Foundation</h4>
+       <ul style="margin-left: 24px; line-height: 2; color: #856404;">
+        <li>✓ Optimize LinkedIn profile</li>
+        <li>✓ Create business email signature</li>
+        <li>✓ List 20 target clients/agencies</li>
+       </ul>
+       <h4 style="color: #0F2440; margin-top: 24px; margin-bottom: 16px;">Week 2-3: Outreach</h4>
+       <ul style="margin-left: 24px; line-height: 2; color: #856404;">
+        <li>✓ Send 5 cold emails per day</li>
+        <li>✓ Apply to 10 translation agencies</li>
+        <li>✓ Post on social media 3x per week</li>
+       </ul>
+       <h4 style="color: #0F2440; margin-top: 24px; margin-bottom: 16px;">Week 4: Follow-up &amp; Optimize</h4>
+       <ul style="margin-left: 24px; line-height: 2; color: #856404;">
+        <li>✓ Follow up with all outreach (after 1 week)</li>
+        <li>✓ Track what's working (response rates)</li>
+        <li>✓ Adjust approach based on results</li>
+       </ul>
+       <p style="margin-top: 24px; color: #856404; font-style: italic;"><strong>Remember:</strong> Marketing is consistent effort, not one-time activity. Dedicate 30 minutes daily to marketing activities!</p>
+      </div>
+     </div>
+    </div>
+   </div><!-- WORKSHEET PAGE -->
+   <div id="page-worksheet" class="page">
+    <div class="tool-page-header">
+     <div class="container">
+      <h1>Business Planning Worksheets</h1>
+      <p>Downloadable templates to organize and grow your freelance business</p>
+     </div>
+    </div>
+    <div class="container"><button class="btn btn-outline back-button" onclick="navigateTo('home')">← Back to Tools</button>
+     <div class="generator-section">
+      <h2>📝 Your Business Planning Tools</h2>
+      <p style="font-size: 18px; color: #666; margin-bottom: 40px; line-height: 1.8;">Use these interactive worksheets to plan and track your freelance linguist business. Fill them out, print them, or save them for reference!</p><!-- Monthly Income Goal Worksheet -->
+      <div style="background: #E8F1FF; padding: 32px; border-radius: 16px; margin-bottom: 32px;">
+       <h3 style="color: #0F2440; font-size: 24px; margin-bottom: 20px;">💰 Monthly Income Goal Planner</h3>
+       <div class="form-group"><label for="ws-target-income">Target Monthly Income (RM)</label> <input type="number" id="ws-target-income" placeholder="5000" min="0">
+       </div>
+       <div class="form-group"><label for="ws-working-days">Working Days per Month</label> <input type="number" id="ws-working-days" placeholder="20" min="1" max="31">
+       </div>
+       <div class="form-group"><label for="ws-avg-rate">Average Rate per Word/Hour (RM)</label> <input type="number" id="ws-avg-rate" placeholder="0.30" step="0.01" min="0">
+       </div><button class="btn btn-primary" onclick="calculateIncomeGoal()">Calculate Goals</button>
+       <div id="income-goal-result" style="display: none; margin-top: 24px; background: white; padding: 24px; border-radius: 12px;">
+        <h4 style="color: #0F2440; margin-bottom: 16px;">Your Action Plan:</h4>
+        <div id="income-goal-content"></div>
+       </div>
+      </div><!-- Client Prospecting Tracker -->
+      <div style="background: #DFF5EC; padding: 32px; border-radius: 16px; margin-bottom: 32px;">
+       <h3 style="color: #0F2440; font-size: 24px; margin-bottom: 20px;">🎯 Weekly Prospecting Tracker</h3>
+       <p style="color: #666; margin-bottom: 20px;">Track your weekly outreach activities:</p>
+       <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden;">
+        <thead>
+         <tr style="background: #0F2440; color: white;">
+          <th style="padding: 12px; text-align: left;">Activity</th>
+          <th style="padding: 12px; text-align: center;">Target</th>
+          <th style="padding: 12px; text-align: center;">Actual</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr style="border-bottom: 1px solid #e0e0e0;">
+          <td style="padding: 12px;">Cold Emails Sent</td>
+          <td style="padding: 12px; text-align: center;">25</td>
+          <td style="padding: 12px; text-align: center;"><input type="number" style="width: 60px; padding: 4px; text-align: center;" min="0"></td>
+         </tr>
+         <tr style="border-bottom: 1px solid #e0e0e0;">
+          <td style="padding: 12px;">LinkedIn Connections Made</td>
+          <td style="padding: 12px; text-align: center;">10</td>
+          <td style="padding: 12px; text-align: center;"><input type="number" style="width: 60px; padding: 4px; text-align: center;" min="0"></td>
+         </tr>
+         <tr style="border-bottom: 1px solid #e0e0e0;">
+          <td style="padding: 12px;">Social Media Posts</td>
+          <td style="padding: 12px; text-align: center;">5</td>
+          <td style="padding: 12px; text-align: center;"><input type="number" style="width: 60px; padding: 4px; text-align: center;" min="0"></td>
+         </tr>
+         <tr style="border-bottom: 1px solid #e0e0e0;">
+          <td style="padding: 12px;">Follow-Up Messages</td>
+          <td style="padding: 12px; text-align: center;">10</td>
+          <td style="padding: 12px; text-align: center;"><input type="number" style="width: 60px; padding: 4px; text-align: center;" min="0"></td>
+         </tr>
+         <tr>
+          <td style="padding: 12px;">Agency Applications</td>
+          <td style="padding: 12px; text-align: center;">5</td>
+          <td style="padding: 12px; text-align: center;"><input type="number" style="width: 60px; padding: 4px; text-align: center;" min="0"></td>
+         </tr>
+        </tbody>
+       </table>
+       <p style="margin-top: 20px; padding: 16px; background: #fff3cd; border-radius: 8px; color: #856404;">💡 <strong>Tip:</strong> Print this weekly and track your progress. Consistency in outreach leads to consistent income!</p>
+      </div><!-- Rate Increase Planner -->
+      <div style="background: #FFF4E6; padding: 32px; border-radius: 16px; margin-bottom: 32px;">
+       <h3 style="color: #0F2440; font-size: 24px; margin-bottom: 20px;">📈 Annual Rate Increase Planner</h3>
+       <div class="form-group"><label for="ws-current-rate">Current Rate (RM per word/hour)</label> <input type="number" id="ws-current-rate" placeholder="0.30" step="0.01" min="0">
+       </div>
+       <div class="form-group"><label for="ws-increase-percent">Planned Increase (%)</label> <select id="ws-increase-percent"> <option value="5">5% (Conservative)</option> <option value="10" selected>10% (Recommended)</option> <option value="15">15% (Aggressive)</option> <option value="20">20% (Premium)</option> </select>
+       </div>
+       <div class="form-group"><label for="ws-monthly-volume">Monthly Volume (words/hours)</label> <input type="number" id="ws-monthly-volume" placeholder="10000" min="0">
+       </div><button class="btn btn-primary" onclick="calculateRateIncrease()">Calculate Impact</button>
+       <div id="rate-increase-result" style="display: none; margin-top: 24px; background: white; padding: 24px; border-radius: 12px;">
+        <div id="rate-increase-content"></div>
+       </div>
+      </div><!-- Skill Development Planner -->
+      <div style="background: #E8E0FF; padding: 32px; border-radius: 16px;">
+       <h3 style="color: #0F2440; font-size: 24px; margin-bottom: 20px;">📚 Quarterly Skill Development Plan</h3>
+       <p style="color: #666; margin-bottom: 20px;">Set your professional development goals:</p>
+       <div style="background: white; padding: 24px; border-radius: 12px; margin-bottom: 20px;">
+        <h4 style="color: #0F2440; margin-bottom: 12px;">Q1 Goals (Jan-Mar)</h4><textarea style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; min-height: 80px; font-family: inherit;" placeholder="E.g., Complete CAT tool course, Get 3 medical translation samples"></textarea>
+       </div>
+       <div style="background: white; padding: 24px; border-radius: 12px; margin-bottom: 20px;">
+        <h4 style="color: #0F2440; margin-bottom: 12px;">Q2 Goals (Apr-Jun)</h4><textarea style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; min-height: 80px; font-family: inherit;" placeholder="E.g., Attend industry conference, Build portfolio website"></textarea>
+       </div>
+       <div style="background: white; padding: 24px; border-radius: 12px; margin-bottom: 20px;">
+        <h4 style="color: #0F2440; margin-bottom: 12px;">Q3 Goals (Jul-Sep)</h4><textarea style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; min-height: 80px; font-family: inherit;" placeholder="E.g., Obtain professional certification, Raise rates by 10%"></textarea>
+       </div>
+       <div style="background: white; padding: 24px; border-radius: 12px;">
+        <h4 style="color: #0F2440; margin-bottom: 12px;">Q4 Goals (Oct-Dec)</h4><textarea style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; min-height: 80px; font-family: inherit;" placeholder="E.g., Secure 2 retainer clients, Plan next year's strategy"></textarea>
+       </div>
+       <p style="margin-top: 20px; padding: 16px; background: #fff3cd; border-radius: 8px; color: #856404;">💡 <strong>Pro Tip:</strong> Review your goals monthly and adjust as needed. Continuous learning = higher rates!</p>
+      </div>
+     </div>
+    </div>
+   </div><!-- CLIENT TRACKER PAGE -->
+   <div id="page-client-tracker" class="page">
+    <div class="tool-page-header">
+     <div class="container">
+      <h1>Client Tracker</h1>
+      <p>Keep track of your clients, projects, and communication</p>
+     </div>
+    </div>
+    <div class="container"><button class="btn btn-outline back-button" onclick="navigateTo('home')">← Back to Tools</button>
+     <div class="how-to-section">
+      <h2>How to Use</h2>
+      <ol>
+       <li>Add new clients with their contact information</li>
+       <li>Track project status and deadlines</li>
+       <li>Record communication history and notes</li>
+       <li>View all your client information in one place</li>
+      </ol>
+      <p style="background: #fff3cd; padding: 16px; border-radius: 8px; margin-top: 16px; color: #856404;"><strong>⚠️ Note:</strong> In the FREE version, your client data is stored temporarily and will be lost when you refresh the page. Upgrade to BASIC or PRO to save your data permanently!</p>
+     </div>
+     <div class="generator-section">
+      <h2>Add New Client</h2>
+      <div class="form-group"><label for="ct-client-name">Client Name</label> <input type="text" id="ct-client-name" placeholder="Client or Company Name">
+      </div>
+      <div class="form-group"><label for="ct-email">Email</label> <input type="email" id="ct-email" placeholder="client@example.com">
+      </div>
+      <div class="form-group"><label for="ct-phone">Phone (Optional)</label> <input type="text" id="ct-phone" placeholder="+60 12-345 6789">
+      </div>
+      <div class="form-group"><label for="ct-project">Current Project</label> <input type="text" id="ct-project" placeholder="e.g., Website Translation - 5000 words">
+      </div>
+      <div class="form-group"><label for="ct-status">Project Status</label> <select id="ct-status"> <option value="Prospect">Prospect</option> <option value="Active">Active</option> <option value="Completed">Completed</option> <option value="On Hold">On Hold</option> </select>
+      </div>
+      <div class="form-group"><label for="ct-notes">Notes</label> <textarea id="ct-notes" placeholder="Any important notes about this client..."></textarea>
+      </div><button class="btn btn-primary" onclick="addClient()">Add Client</button>
+      <div style="background: #E8F1FF; padding: 24px; border-radius: 12px; margin-top: 32px;">
+       <h3 style="color: #0F2440; margin-bottom: 16px; font-size: 20px;">📋 Your Client List</h3>
+       <div id="client-list" style="margin-top: 20px;">
+        <p style="color: #666; font-style: italic;">No clients added yet. Add your first client above!</p>
+       </div>
+      </div>
+      <div style="background: #FFF4E6; padding: 20px; border-radius: 12px; margin-top: 24px;">
+       <h4 style="color: #0F2440; margin-bottom: 12px;">⭐ Want to save your clients permanently?</h4>
+       <p style="color: #666; margin-bottom: 16px;">Upgrade to BASIC or PRO to save your client data automatically to a Canva Sheet!</p><button class="btn btn-primary" onclick="showUpgradeMessage('Client Tracker - Data Persistence')">Upgrade Now</button>
+      </div>
+     </div>
+    </div>
+   </div><!-- Upgrade Modal -->
+   <div id="upgrade-modal" class="modal">
+    <div class="modal-content">
+     <h2>🚀 Upgrade to Unlock</h2>
+     <p id="upgrade-message">Upgrade to BASIC or PRO to access this feature and many more!</p>
+     <div style="background: #f8f9fa; padding: 24px; border-radius: 12px; margin: 24px 0; text-align: left;">
+      <h3 style="color: #0F2440; margin-bottom: 16px; font-size: 20px;">What's Included:</h3>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+       <li style="padding: 8px 0; color: #0F2440;">✅ <strong>BASIC Plan:</strong> 7 tools unlocked</li>
+       <li style="padding: 8px 0; color: #0F2440;">✅ <strong>PRO Plan:</strong> All 12 tools unlocked</li>
+       <li style="padding: 8px 0; color: #0F2440;">✅ Permanent data storage in Canva Sheets</li>
+       <li style="padding: 8px 0; color: #0F2440;">✅ Priority support</li>
+      </ul>
+     </div>
+     <div class="modal-buttons"><button class="btn btn-primary" onclick="closeUpgradeModal()">Maybe Later</button> <button class="btn btn-secondary" onclick="contactForUpgrade()">Contact for Upgrade</button>
+     </div>
+    </div>
+   </div>
+   <script>
+      // VERSION CONTROL
+      const VERSION = 'FREE';
+
+      const defaultConfig = {
+        site_title: "Cikgu Munirah",
+        hero_title: "Free Linguist Toolkit",
+        hero_subtitle: "Your first step to becoming an independent freelance linguist.\nBuilt from real freelance experience."
+      };
+
+      async function onConfigChange(config) {
+        document.getElementById('logo').textContent = config.site_title || defaultConfig.site_title;
+        document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
+        document.getElementById('hero-subtitle').innerHTML = (config.hero_subtitle || defaultConfig.hero_subtitle).replace(/\n/g, '<br>');
+        document.title = config.site_title || defaultConfig.site_title;
+      }
+
+      function mapToCapabilities(config) {
+        return {
+          recolorables: [],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        };
+      }
+
+      function mapToEditPanelValues(config) {
+        return new Map([
+          ["site_title", config.site_title || defaultConfig.site_title],
+          ["hero_title", config.hero_title || defaultConfig.hero_title],
+          ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle]
+        ]);
+      }
+
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities,
+          mapToEditPanelValues
+        });
+      }
+
+      // Navigation
+      function navigateTo(pageId) {
+        document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+        document.getElementById('page-' + pageId).classList.add('active');
+        window.scrollTo(0, 0);
+      }
+
+      document.getElementById('logo').addEventListener('click', () => navigateTo('home'));
+      document.getElementById('nav-home').addEventListener('click', () => navigateTo('home'));
+      document.getElementById('nav-tools').addEventListener('click', () => navigateTo('home'));
+      document.getElementById('hero-cta-free').addEventListener('click', () => {
+        document.querySelector('.tools-grid').scrollIntoView({ behavior: 'smooth' });
+      });
+      
+      document.getElementById('hero-cta-contact').addEventListener('click', () => {
+        window.open('mailto:contact@linguisttoolkit.com', '_blank', 'noopener,noreferrer');
+      });
+
+      // Upgrade Modal
+      function showUpgradeMessage(featureName) {
+        document.getElementById('upgrade-message').textContent = 
+          `Unlock "${featureName}" by upgrading to BASIC or PRO!`;
+        document.getElementById('upgrade-modal').classList.add('active');
+      }
+
+      function closeUpgradeModal() {
+        document.getElementById('upgrade-modal').classList.remove('active');
+      }
+
+      function contactForUpgrade() {
+        window.open('mailto:contact@linguisttoolkit.com?subject=Upgrade Request', '_blank', 'noopener,noreferrer');
+        closeUpgradeModal();
+      }
+
+      // Rate Calculator
+      var rateCalcForm = document.getElementById('rate-calculator-form');
+      if (rateCalcForm) {
+        var serviceTypeSelect = document.getElementById('service-type');
+        var projectSizeGroup = document.getElementById('project-size-group');
+        var sizeHint = document.getElementById('size-hint');
+        
+        serviceTypeSelect.addEventListener('change', function() {
+          var service = this.value;
+          if (service) {
+            projectSizeGroup.style.display = 'block';
+            if (service === 'translation' || service === 'proofreading') {
+              sizeHint.textContent = 'Enter the number of words for your project';
+            } else if (service === 'interpretation') {
+              sizeHint.textContent = 'Enter the number of hours for your project';
+            } else if (service === 'subtitling' || service === 'voiceover' || service === 'transcription') {
+              sizeHint.textContent = 'Enter the number of minutes for your project';
+            }
+          } else {
+            projectSizeGroup.style.display = 'none';
+          }
+        });
+        
+        rateCalcForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          var serviceType = document.getElementById('service-type').value;
+          var experienceLevel = document.getElementById('experience-level').value;
+          var currency = document.getElementById('currency').value;
+          var projectSize = parseFloat(document.getElementById('project-size').value) || 0;
+          var isRush = document.getElementById('rush-job').checked;
+          var isSpecialized = document.getElementById('specialized').checked;
+          
+          var rates = {
+            translation: {
+              beginner: { min: 0.20, max: 0.30, unit: 'per word' },
+              intermediate: { min: 0.30, max: 0.50, unit: 'per word' },
+              expert: { min: 0.50, max: 0.80, unit: 'per word' }
+            },
+            interpretation: {
+              beginner: { min: 150, max: 250, unit: 'per hour' },
+              intermediate: { min: 250, max: 450, unit: 'per hour' },
+              expert: { min: 450, max: 900, unit: 'per hour' }
+            },
+            proofreading: {
+              beginner: { min: 0.10, max: 0.18, unit: 'per word' },
+              intermediate: { min: 0.18, max: 0.30, unit: 'per word' },
+              expert: { min: 0.30, max: 0.50, unit: 'per word' }
+            },
+            subtitling: {
+              beginner: { min: 5, max: 8, unit: 'per minute' },
+              intermediate: { min: 8, max: 15, unit: 'per minute' },
+              expert: { min: 15, max: 25, unit: 'per minute' }
+            },
+            voiceover: {
+              beginner: { min: 80, max: 120, unit: 'per finished minute' },
+              intermediate: { min: 120, max: 250, unit: 'per finished minute' },
+              expert: { min: 250, max: 500, unit: 'per finished minute' }
+            },
+            transcription: {
+              beginner: { min: 8, max: 12, unit: 'per audio minute' },
+              intermediate: { min: 12, max: 18, unit: 'per audio minute' },
+              expert: { min: 18, max: 30, unit: 'per audio minute' }
+            }
+          };
+          
+          var baseRate = rates[serviceType][experienceLevel];
+          var minRate = baseRate.min;
+          var maxRate = baseRate.max;
+          var unit = baseRate.unit;
+          
+          if (isRush) {
+            minRate *= 1.5;
+            maxRate *= 1.5;
+          }
+          
+          if (isSpecialized) {
+            minRate *= 1.3;
+            maxRate *= 1.3;
+          }
+          
+          var conversionRate = 4.5;
+          var currencySymbol = 'RM';
+          if (currency === 'USD') {
+            minRate /= conversionRate;
+            maxRate /= conversionRate;
+            currencySymbol = '$';
+          }
+
+          var minRateFormatted = minRate.toFixed(2);
+          var maxRateFormatted = maxRate.toFixed(2);
+          
+          var projectTotal = '';
+          if (projectSize > 0) {
+            var minTotal = (minRate * projectSize).toFixed(2);
+            var maxTotal = (maxRate * projectSize).toFixed(2);
+            projectTotal = '<div style="background: #E8F1FF; padding: 20px; border-radius: 12px; margin-top: 20px;">';
+            projectTotal += '<h4 style="color: #0F2440; margin-bottom: 12px; font-size: 18px;">Project Quote</h4>';
+            projectTotal += '<p style="font-size: 16px; color: #0F2440; margin-bottom: 8px;">For ' + projectSize + ' ' + unit.split(' ')[1] + (projectSize > 1 ? 's' : '') + ':</p>';
+            projectTotal += '<p style="font-size: 24px; font-weight: 700; color: #667eea; margin: 0;">' + currencySymbol + ' ' + minTotal + ' - ' + currencySymbol + ' ' + maxTotal + '</p>';
+            projectTotal += '</div>';
+          }
+          
+          var resultsHTML = '';
+          resultsHTML += '<div style="background: #DFF5EC; padding: 24px; border-radius: 12px; margin-bottom: 20px;">';
+          resultsHTML += '<h3 style="color: #0F2440; margin-bottom: 16px; font-size: 22px;">Recommended Rate Range</h3>';
+          resultsHTML += '<p style="font-size: 28px; font-weight: 700; color: #0F2440; margin: 0;">';
+          resultsHTML += currencySymbol + ' ' + minRateFormatted + ' - ' + currencySymbol + ' ' + maxRateFormatted + ' ' + unit;
+          resultsHTML += '</p>';
+          resultsHTML += '</div>';
+          
+          resultsHTML += '<div style="margin-bottom: 20px;">';
+          resultsHTML += '<h4 style="color: #0F2440; margin-bottom: 12px; font-size: 18px;">Rate Breakdown</h4>';
+          resultsHTML += '<ul style="list-style: none; padding: 0; margin: 0;">';
+          resultsHTML += '<li style="padding: 8px 0; border-bottom: 1px solid #e8e8e8;">📋 Service: <strong>' + serviceType.charAt(0).toUpperCase() + serviceType.slice(1) + '</strong></li>';
+          resultsHTML += '<li style="padding: 8px 0; border-bottom: 1px solid #e8e8e8;">⭐ Experience: <strong>' + experienceLevel.charAt(0).toUpperCase() + experienceLevel.slice(1) + '</strong></li>';
+          if (isRush) resultsHTML += '<li style="padding: 8px 0; border-bottom: 1px solid #e8e8e8;">⚡ Rush Job: <strong>+50%</strong></li>';
+          if (isSpecialized) resultsHTML += '<li style="padding: 8px 0; border-bottom: 1px solid #e8e8e8;">🎓 Specialized Field: <strong>+30%</strong></li>';
+          resultsHTML += '</ul>';
+          resultsHTML += '</div>';
+          
+          resultsHTML += projectTotal;
+          
+          resultsHTML += '<div style="background: #fff3cd; padding: 20px; border-radius: 12px; margin-top: 20px; color: #856404;">';
+          resultsHTML += '<h4 style="color: #856404; margin-bottom: 12px; font-size: 16px;">💡 Pro Tips for Pricing</h4>';
+          resultsHTML += '<ul style="margin: 0; padding-left: 20px; line-height: 1.8; font-size: 14px;">';
+          resultsHTML += '<li>Start at the lower end when building your portfolio</li>';
+          resultsHTML += '<li>Charge at the higher end for established clients</li>';
+          resultsHTML += '<li>Set minimum project fees (e.g., ' + currencySymbol + '100-150)</li>';
+          resultsHTML += '<li>Offer volume discounts for large projects (10-15% off)</li>';
+          resultsHTML += '<li>Review and increase rates annually</li>';
+          resultsHTML += '</ul>';
+          resultsHTML += '</div>';
+          
+          document.getElementById('rate-results').innerHTML = resultsHTML;
+          document.getElementById('rate-output').classList.add('visible');
+          document.getElementById('rate-output').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      }
+
+      // Pitch Generator
+      var pitchForm = document.getElementById('pitch-form');
+      if (pitchForm) {
+        pitchForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          var yourName = document.getElementById('your-name').value;
+          var yourService = document.getElementById('your-service').value;
+          var yourExperience = document.getElementById('your-experience').value;
+          var clientName = document.getElementById('client-name').value;
+          var clientIndustry = document.getElementById('client-industry').value;
+          var platform = document.getElementById('platform').value;
+          var uniqueValue = document.getElementById('unique-value').value;
+          
+          var pitchText = '';
+          
+          if (platform === 'whatsapp') {
+            pitchText = `Hi! I'm ${yourName}, a ${yourService} specialist with ${yourExperience} years of experience.\n\nI noticed ${clientName} works in ${clientIndustry}, and I'd love to help you reach a wider audience with professional translation services.\n\n${uniqueValue ? uniqueValue + '\n\n' : ''}Would you be open to a quick chat about your language needs?\n\nBest regards,\n${yourName}`;
+          } else if (platform === 'email') {
+            pitchText = `Subject: Professional ${yourService} Services for ${clientName}\n\nDear ${clientName} Team,\n\nI hope this email finds you well. My name is ${yourName}, and I specialize in ${yourService} with ${yourExperience} years of professional experience.\n\nI noticed your company operates in the ${clientIndustry} sector, and I believe my language services could help you:\n• Expand into new markets\n• Communicate more effectively with international clients\n• Localize your content for better engagement\n\n${uniqueValue ? 'What sets me apart:\n' + uniqueValue + '\n\n' : ''}I'd love to discuss how I can support ${clientName}'s language needs. Would you be available for a brief call this week?\n\nBest regards,\n${yourName}\n[Your contact information]`;
+          } else if (platform === 'linkedin') {
+            pitchText = `Hi [First Name],\n\nI came across ${clientName}'s profile and was impressed by your work in ${clientIndustry}!\n\nI'm ${yourName}, specializing in ${yourService} with ${yourExperience} years of experience. I help companies like yours communicate effectively across languages and cultures.\n\n${uniqueValue ? uniqueValue + '\n\n' : ''}I'd love to connect and learn more about your language service needs.\n\nBest,\n${yourName}`;
+          } else if (platform === 'social') {
+            pitchText = `Hey! 👋\n\nI'm ${yourName}, a ${yourService} professional with ${yourExperience} years of experience.\n\nI saw your work at ${clientName} in the ${clientIndustry} space and thought we might be a great fit! ${uniqueValue ? '\n\n' + uniqueValue : ''}\n\nWould love to chat about how I can help with your language needs! 💬\n\n- ${yourName}`;
+          } else if (platform === 'upwork') {
+            pitchText = `Hello,\n\nI'm ${yourName}, a professional ${yourService} specialist with ${yourExperience} years of experience. I'm very interested in your project and believe I'm an excellent fit.\n\n**Why I'm the right choice for ${clientName}:**\n\n• ${yourExperience}+ years of experience in ${yourService}\n• Deep understanding of ${clientIndustry} industry terminology\n• Proven track record of delivering high-quality translations on time\n${uniqueValue ? '• ' + uniqueValue + '\n' : ''}\n**My Approach:**\nI don't just translate words—I adapt your message to resonate with your target audience while maintaining your brand voice and industry-specific terminology.\n\n**Next Steps:**\nI'd love to discuss your specific requirements and timeline. I'm available to start immediately and can provide samples of my previous work in ${clientIndustry}.\n\nLooking forward to working with you!\n\nBest regards,\n${yourName}`;
+          }
+          
+          document.getElementById('pitch-text').textContent = pitchText;
+          document.getElementById('pitch-output').classList.add('visible');
+          document.getElementById('pitch-output').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      }
+
+      // Follow-Up Generator
+      function generateFollowUp() {
+        const client = document.getElementById('fu-client').value || 'Client';
+        const type = document.getElementById('fu-type').value;
+        const context = document.getElementById('fu-context').value;
+
+        const messages = {
+          proposal: `Subject: Following Up on Translation Proposal
+
+Dear ${client},
+
+I hope this email finds you well. I wanted to follow up on the translation proposal I sent last week.
+
+${context ? context + '\n\n' : ''}I'm very interested in working with you on this project and would be happy to discuss any questions you might have or adjust the proposal to better fit your needs.
+
+Would you have time for a quick call this week to discuss next steps?
+
+Looking forward to hearing from you.
+
+Best regards,
+[Your Name]`,
+
+          completion: `Subject: Project Completion - Thank You!
+
+Dear ${client},
+
+I'm pleased to inform you that your translation project has been completed and delivered.
+
+${context ? context + '\n\n' : ''}It was a pleasure working with you on this project. I hope the final deliverables meet your expectations.
+
+I would greatly appreciate any feedback you might have, and I'd be happy to make any minor adjustments if needed.
+
+I look forward to the possibility of working together again in the future.
+
+Best regards,
+[Your Name]`,
+
+          checkin: `Subject: Checking In
+
+Dear ${client},
+
+I hope you're doing well! I wanted to reach out and see how things are going.
+
+${context ? context + '\n\n' : ''}I enjoyed working with you on our previous project and wanted to check if you have any upcoming translation needs I might assist with.
+
+I'm currently available for new projects and would be happy to support your translation requirements.
+
+Please don't hesitate to reach out if there's anything I can help with.
+
+Best regards,
+[Your Name]`,
+
+          invoice: `Subject: Friendly Reminder - Invoice Due
+
+Dear ${client},
+
+I hope you're well. I'm writing as a friendly reminder that invoice #[Invoice Number] for the translation services provided is now due.
+
+${context ? context + '\n\n' : ''}Payment Details:
+• Invoice Amount: $[Amount]
+• Due Date: [Date]
+• Payment Methods: [Your payment methods]
+
+If you've already processed this payment, please disregard this message. If you have any questions or concerns, please don't hesitate to reach out.
+
+Thank you for your business!
+
+Best regards,
+[Your Name]`
+        };
+
+        document.getElementById('fu-result').textContent = messages[type];
+        document.getElementById('fu-output').classList.add('visible');
+      }
+
+      // Client Tracker (Session storage only - resets on page reload)
+      let clients = [];
+
+      function addClient() {
+        const name = document.getElementById('ct-client-name').value;
+        const email = document.getElementById('ct-email').value;
+        const phone = document.getElementById('ct-phone').value;
+        const project = document.getElementById('ct-project').value;
+        const status = document.getElementById('ct-status').value;
+        const notes = document.getElementById('ct-notes').value;
+
+        if (!name || !email) {
+          const notification = document.createElement('div');
+          notification.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #dc3545; color: white; padding: 16px 24px; border-radius: 8px; z-index: 3000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);';
+          notification.textContent = 'Please fill in at least Client Name and Email';
+          document.body.appendChild(notification);
+          setTimeout(() => notification.remove(), 3000);
+          return;
+        }
+
+        const client = {
+          id: Date.now(),
+          name: name,
+          email: email,
+          phone: phone,
+          project: project,
+          status: status,
+          notes: notes,
+          dateAdded: new Date().toLocaleDateString()
+        };
+
+        clients.push(client);
+        displayClients();
+        
+        // Clear form
+        document.getElementById('ct-client-name').value = '';
+        document.getElementById('ct-email').value = '';
+        document.getElementById('ct-phone').value = '';
+        document.getElementById('ct-project').value = '';
+        document.getElementById('ct-status').value = 'Prospect';
+        document.getElementById('ct-notes').value = '';
+
+        // Show success notification
+        const notification = document.createElement('div');
+        notification.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #28a745; color: white; padding: 16px 24px; border-radius: 8px; z-index: 3000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);';
+        notification.textContent = 'Client added successfully!';
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 3000);
+      }
+
+      function displayClients() {
+        const listContainer = document.getElementById('client-list');
+        
+        if (clients.length === 0) {
+          listContainer.innerHTML = '<p style="color: #666; font-style: italic;">No clients added yet. Add your first client above!</p>';
+          return;
+        }
+
+        let html = '';
+        clients.forEach((client, index) => {
+          const statusColors = {
+            'Prospect': '#FFA500',
+            'Active': '#28a745',
+            'Completed': '#6c757d',
+            'On Hold': '#dc3545'
+          };
+          
+          html += `
+            <div style="background: white; padding: 20px; border-radius: 12px; margin-bottom: 16px; border-left: 4px solid ${statusColors[client.status]};">
+              <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+                <div>
+                  <h4 style="color: #0F2440; font-size: 18px; margin-bottom: 4px;">${client.name}</h4>
+                  <p style="color: #666; font-size: 14px; margin: 0;">Added: ${client.dateAdded}</p>
+                </div>
+                <span style="background: ${statusColors[client.status]}; color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;">${client.status}</span>
+              </div>
+              <div style="color: #0F2440; line-height: 1.8;">
+                <p style="margin: 4px 0;"><strong>📧 Email:</strong> ${client.email}</p>
+                ${client.phone ? `<p style="margin: 4px 0;"><strong>📱 Phone:</strong> ${client.phone}</p>` : ''}
+                ${client.project ? `<p style="margin: 4px 0;"><strong>�� Project:</strong> ${client.project}</p>` : ''}
+                ${client.notes ? `<p style="margin: 4px 0;"><strong>📝 Notes:</strong> ${client.notes}</p>` : ''}
+              </div>
+              <button class="btn btn-outline" style="margin-top: 12px; padding: 8px 16px; font-size: 14px;" onclick="removeClient(${client.id})">Remove</button>
+            </div>
+          `;
+        });
+
+        listContainer.innerHTML = html;
+      }
+
+      function removeClient(id) {
+        clients = clients.filter(c => c.id !== id);
+        displayClients();
+      }
+
+      // Worksheet Functions
+      function calculateIncomeGoal() {
+        const targetIncome = parseFloat(document.getElementById('ws-target-income').value);
+        const workingDays = parseInt(document.getElementById('ws-working-days').value);
+        const avgRate = parseFloat(document.getElementById('ws-avg-rate').value);
+
+        if (!targetIncome || !workingDays || !avgRate) {
+          const notification = document.createElement('div');
+          notification.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #dc3545; color: white; padding: 16px 24px; border-radius: 8px; z-index: 3000;';
+          notification.textContent = 'Please fill in all fields';
+          document.body.appendChild(notification);
+          setTimeout(() => notification.remove(), 3000);
+          return;
+        }
+
+        const dailyIncome = targetIncome / workingDays;
+        const wordsOrHoursPerDay = dailyIncome / avgRate;
+        const wordsOrHoursPerMonth = wordsOrHoursPerDay * workingDays;
+
+        let html = `
+          <div style="background: #DFF5EC; padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h5 style="color: #0F2440; margin-bottom: 12px; font-size: 18px;">Daily Target</h5>
+            <p style="font-size: 32px; font-weight: 700; color: #667eea; margin: 0;">RM ${dailyIncome.toFixed(2)}</p>
+            <p style="color: #666; margin-top: 8px;">${wordsOrHoursPerDay.toFixed(0)} words/hours per day</p>
+          </div>
+          <div style="background: #E8F1FF; padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h5 style="color: #0F2440; margin-bottom: 12px; font-size: 18px;">Monthly Volume Needed</h5>
+            <p style="font-size: 32px; font-weight: 700; color: #667eea; margin: 0;">${wordsOrHoursPerMonth.toFixed(0)} words/hours</p>
+          </div>
+          <div style="background: #fff3cd; padding: 20px; border-radius: 12px; color: #856404;">
+            <p style="margin: 0; line-height: 1.8;"><strong>💡 Action Steps:</strong><br>
+            • Aim for ${wordsOrHoursPerDay.toFixed(0)} words/hours daily<br>
+            • Track your daily progress<br>
+            • Build a pipeline of ${Math.ceil(wordsOrHoursPerMonth / 5000)} projects per month (assuming 5000 words/project)</p>
+          </div>
+        `;
+
+        document.getElementById('income-goal-content').innerHTML = html;
+        document.getElementById('income-goal-result').style.display = 'block';
+      }
+
+      function calculateRateIncrease() {
+        const currentRate = parseFloat(document.getElementById('ws-current-rate').value);
+        const increasePercent = parseInt(document.getElementById('ws-increase-percent').value);
+        const monthlyVolume = parseFloat(document.getElementById('ws-monthly-volume').value);
+
+        if (!currentRate || !monthlyVolume) {
+          const notification = document.createElement('div');
+          notification.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #dc3545; color: white; padding: 16px 24px; border-radius: 8px; z-index: 3000;';
+          notification.textContent = 'Please fill in all fields';
+          document.body.appendChild(notification);
+          setTimeout(() => notification.remove(), 3000);
+          return;
+        }
+
+        const newRate = currentRate * (1 + increasePercent / 100);
+        const currentMonthlyIncome = currentRate * monthlyVolume;
+        const newMonthlyIncome = newRate * monthlyVolume;
+        const monthlyIncrease = newMonthlyIncome - currentMonthlyIncome;
+        const annualIncrease = monthlyIncrease * 12;
+
+        let html = `
+          <div style="background: #DFF5EC; padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h5 style="color: #0F2440; margin-bottom: 12px; font-size: 18px;">New Rate</h5>
+            <p style="font-size: 32px; font-weight: 700; color: #667eea; margin: 0;">RM ${newRate.toFixed(2)}</p>
+            <p style="color: #666; margin-top: 8px;">Previously: RM ${currentRate.toFixed(2)} (+${increasePercent}%)</p>
+          </div>
+          <div style="background: #E8F1FF; padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h5 style="color: #0F2440; margin-bottom: 12px; font-size: 18px;">Additional Monthly Income</h5>
+            <p style="font-size: 32px; font-weight: 700; color: #28a745; margin: 0;">+RM ${monthlyIncrease.toFixed(2)}</p>
+          </div>
+          <div style="background: #FFF4E6; padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h5 style="color: #0F2440; margin-bottom: 12px; font-size: 18px;">Additional Annual Income</h5>
+            <p style="font-size: 32px; font-weight: 700; color: #28a745; margin: 0;">+RM ${annualIncrease.toFixed(2)}</p>
+          </div>
+          <div style="background: #fff3cd; padding: 20px; border-radius: 12px; color: #856404;">
+            <p style="margin: 0; line-height: 1.8;"><strong>💡 Implementation Tips:</strong><br>
+            • Announce rate increase 3 months in advance to existing clients<br>
+            • Apply new rates to all new clients immediately<br>
+            • Grandfather loyal clients for 6-12 months<br>
+            • Emphasize added value: experience, faster turnaround, better quality</p>
+          </div>
+        `;
+
+        document.getElementById('rate-increase-content').innerHTML = html;
+        document.getElementById('rate-increase-result').style.display = 'block';
+      }
+
+      // Copy to Clipboard
+      function copyToClipboard(elementId) {
+        const text = document.getElementById(elementId).textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          const btn = event.target;
+          const originalText = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(() => {
+            btn.textContent = originalText;
+          }, 2000);
+        });
+      }
+    </script>
+  </div>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ad421b2f4dccc5f',t:'MTc2NTYxNDk2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
