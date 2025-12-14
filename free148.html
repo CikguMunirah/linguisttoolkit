@@ -25,7 +25,7 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       line-height: 1.6;
       color: #0F2440;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #ffffff;
       overflow-x: hidden;
     }
 
@@ -41,7 +41,7 @@
 
     /* Navigation Bar */
     .navbar {
-      background: rgba(255, 255, 255, 0.98);
+      background: #ffffff
       backdrop-filter: blur(10px);
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
       position: sticky;
@@ -87,7 +87,7 @@
     }
 
     .nav-links a:hover {
-      color: #667eea;
+      color: #4A90E2;
     }
 
     .version-badge {
@@ -102,7 +102,7 @@
 
     /* Hero Section */
     .hero {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #E8F1FF 0%, #764ba2 100%);
       color: white;
       padding: 100px 0;
       text-align: center;
@@ -149,8 +149,8 @@
     }
 
     .btn-primary {
-      background: white;
-      color: #667eea;
+      background: #0F2440;
+      color: #ffffff;
     }
 
     .btn-primary:hover {
@@ -159,8 +159,8 @@
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
+      background: #DFF5EC;
+      color: #0F2440;
       border: 2px solid white;
     }
 
@@ -171,18 +171,18 @@
 
     .btn-outline {
       background: transparent;
-      color: #667eea;
-      border: 2px solid #667eea;
+      color: #0F2440;
+      border: 2px solid #ffffff;
     }
 
     .btn-outline:hover {
-      background: #667eea;
+      background: #0F2440;
       color: white;
     }
 
     /* Tools Grid */
     .tools-section {
-      background: #f8f9fa;
+      background: #ffffff;
       padding: 80px 0;
       width: 100%;
     }
@@ -225,7 +225,7 @@
     .tool-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
-      border-color: #667eea;
+      border-color: #E8F1FF;
     }
 
     .tool-card.locked {
@@ -601,7 +601,7 @@
     <nav class="navbar">
      <div class="container">
       <div class="logo" id="logo">
-       Cikgu Munirah
+       Cikgu Munirah Malik
       </div>
       <ul class="nav-links">
        <li><a id="nav-home">Home</a></li>
@@ -631,7 +631,7 @@
          💰
         </div>
         <h3>Rate Calculator</h3>
-        <p>Calculate competitive rates based on your experience, service type, and market standards</p><span class="tool-badge">Free</span>
+        <p>Calculate competitive rates based on your experience, service type, specialization and market standards</p><span class="tool-badge">Free</span>
        </div><!-- Pitch Generator - FREE -->
        <div class="tool-card" onclick="navigateTo('pitch')">
         <div class="tool-icon">
@@ -663,7 +663,7 @@
          <div class="lock-icon">
           🔒
          </div>
-         <p>BASIC/PRO</p>
+         <p>PRO</p>
         </div>
        </div><!-- Cover Letter Generator - LOCKED -->
        <div class="tool-card locked" onclick="showUpgradeMessage('Cover Letter Generator')">
@@ -702,7 +702,7 @@
          <div class="lock-icon">
           🔒
          </div>
-         <p>BASIC/PRO</p>
+         <p>PRO</p>
         </div>
        </div><!-- Earning Potential Dashboard - LOCKED -->
        <div class="tool-card locked" onclick="showUpgradeMessage('Earning Potential Dashboard')">
@@ -715,7 +715,7 @@
          <div class="lock-icon">
           🔒
          </div>
-         <p>BASIC/PRO</p>
+         <p>PRO</p>
         </div>
        </div><!-- Basic Marketing Guide - FREE -->
        <div class="tool-card" onclick="navigateTo('marketing-guide')">
@@ -730,38 +730,38 @@
          📝
         </div>
         <h3>Worksheet</h3>
-        <p>Downloadable worksheets for business planning and goal setting</p><span class="tool-badge">Free</span>
+        <p>Hands-on worksheets to plan your services, build your pitch, and start applying for jobs.</p><span class="tool-badge">Free</span>
        </div><!-- Resume Builder - LOCKED -->
        <div class="tool-card locked" onclick="showUpgradeMessage('Resume Builder')">
         <div class="tool-icon">
          📋
         </div>
         <h3>Resume Builder</h3>
-        <p>Design a standout resume highlighting your language skills</p>
+        <p>Create a simple resume to showcase your language skills.</p>
         <div class="lock-overlay">
          <div class="lock-icon">
           🔒
          </div>
-         <p>PRO ONLY</p>
+         <p>BASIC/PRO</p>
         </div>
-       </div><!-- Upskilling Dashboard - LOCKED -->
+       </div><!-- Upskilling Dashboard - FREE -->
        <div class="tool-card locked" onclick="showUpgradeMessage('Upskilling Dashboard')">
         <div class="tool-icon">
          📚
         </div>
         <h3>Upskilling Dashboard</h3>
-        <p>Track your professional development and identify growth opportunities</p>
+        <p>Understand your next steps and explore skills to learn as a freelance linguist.</p>
         <div class="lock-overlay">
          <div class="lock-icon">
           🔒
          </div>
-         <p>PRO ONLY</p>
+         <p>FREE/BASIC/PRO</p>
         </div>
        </div>
       </div><!-- Upgrade Banner -->
       <div class="upgrade-banner">
-       <h3>🚀 Unlock All Features</h3>
-       <p>Upgrade to BASIC or PRO to access all tools and features</p><button class="btn btn-primary" onclick="showUpgradeMessage('Full Toolkit')">View Upgrade Options</button>
+       <h3>Unlock Additional Tools</h3>
+       <p>Upgrade to BASIC or PRO to unlock additional tools that help you work faster and confidence</p><button class="btn btn-primary" onclick="showUpgradeMessage('Full Toolkit')">View Upgrade Options</button>
       </div>
      </div>
     </section><!-- Footer -->
@@ -769,13 +769,16 @@
      <div class="container">
       <div class="footer-content">
        <div class="footer-mission">
-        Empowering linguists worldwide 🌍
+       Practical tools built from real freelance linguist experience.
        </div>
-       <div class="footer-contact"><a href="mailto:contact@linguisttoolkit.com">contact@linguisttoolkit.com</a>
+       <div class="footer-contact"><a href="mailto:freelancersquad.assist@gmail.com">freelancersquad.assist@gmail.com</a>
        </div>
       </div>
       <div class="footer-bottom">
-       © 2024 Linguist Toolkit - FREE Version. All rights reserved.
+       © 2026 Linguist Toolkit - FREE Version. All rights reserved. 
+       
+       - Redistribution or resale of these tools is not permitted -
+
       </div>
      </div>
     </footer>
@@ -791,36 +794,144 @@
      <div class="how-to-section">
       <h2>How to Use</h2>
       <ol>
-       <li>Select your service type (translation, interpretation, etc.)</li>
-       <li>Choose your experience level</li>
-       <li>Add any modifiers (rush job, specialized field)</li>
-       <li>Get your recommended rate range based on Malaysian market standards</li>
+     <li><strong>Select your service:</strong> Choose the type of language service you provide</li>
+      <li><strong>Enter your experience:</strong> Input your years of professional experience</li>
+      <li><strong>Choose calculation method:</strong> Select per word, per page, or per hour</li>
+      <li><strong>View recommended rates:</strong> Get competitive rates in both RM and USD</li>
+      <li><strong>Adjust as needed:</strong> Use these as baseline rates and adjust based on project complexity</li>
       </ol>
      </div>
      <div class="generator-section">
-      <h2>Calculate Your Rate</h2>
+      <h2>Understanding Your Worth</h2>
+     <p style="margin-bottom: 24px; color: #5a6c7d; line-height: 1.8;">Setting the right rate is crucial for freelance success. Too low, and you undervalue your expertise. Too high without justification, and you might lose opportunities. This calculator helps you find the sweet spot based on Malaysian market standards.</p>
+     <h3 style="margin-top: 32px; margin-bottom: 16px; color: #0F2440;">📍 Malaysian Market Rates (ITBM &amp; MTA Standards 2024)</h3>
+     <div style="background: #E8F1FF; padding: 24px; border-radius: 12px; margin-bottom: 24px;">
+      <p style="margin-bottom: 12px;"><strong>Translation (per word):</strong></p>
+      <ul style="margin-left: 24px; line-height: 1.8; color: #0F2440;">
+       <li>Beginner (0-2 years): RM0.20 - RM0.30 per word</li>
+       <li>Intermediate (3-5 years): RM0.30 - RM0.50 per word</li>
+       <li>Expert (5+ years): RM0.50 - RM0.80+ per word</li>
+      </ul>
+      <p style="margin: 16px 0 12px 0;"><strong>Interpretation (per hour):</strong></p>
+      <ul style="margin-left: 24px; line-height: 1.8; color: #0F2440;">
+       <li>Beginner: RM150 - RM250 per hour</li>
+       <li>Intermediate: RM250 - RM450 per hour</li>
+       <li>Expert: RM450 - RM900+ per hour</li>
+      </ul>
+      <p style="margin: 16px 0 12px 0;"><strong>Proofreading/Editing (per word):</strong></p>
+      <ul style="margin-left: 24px; line-height: 1.8; color: #0F2440;">
+       <li>Beginner: RM0.10 - RM0.18 per word</li>
+       <li>Intermediate: RM0.18 - RM0.30 per word</li>
+       <li>Expert: RM0.30 - RM0.50+ per word</li>
+      </ul>
+      <p style="margin: 16px 0 12px 0;"><strong>Subtitling (per minute):</strong></p>
+      <ul style="margin-left: 24px; line-height: 1.8; color: #0F2440;">
+       <li>Beginner: RM5 - RM8 per minute</li>
+       <li>Intermediate: RM8 - RM15 per minute</li>
+       <li>Expert: RM15 - RM25+ per minute</li>
+      </ul>
+      <p style="margin: 16px 0 12px 0;"><strong>Voice Over (per finished minute):</strong></p>
+      <ul style="margin-left: 24px; line-height: 1.8; color: #0F2440;">
+       <li>Beginner: RM80 - RM120 per minute</li>
+       <li>Intermediate: RM120 - RM250 per minute</li>
+       <li>Expert: RM250 - RM500+ per minute</li>
+      </ul>
+      <p style="margin: 16px 0 12px 0;"><strong>Transcription (per audio minute):</strong></p>
+      <ul style="margin-left: 24px; line-height: 1.8; color: #0F2440;">
+       <li>Beginner: RM8 - RM12 per audio minute</li>
+       <li>Intermediate: RM12 - RM18 per audio minute</li>
+       <li>Expert: RM18 - RM30+ per audio minute</li>
+      </ul>
+      <p style="margin-top: 20px; font-size: 13px; color: #5a6c7d; font-style: italic;">* Rates based on Institute of Translation &amp; Books Malaysia (ITBM) and Malaysian Translators Association (MTA) guidelines, adjusted for 2024 market standards.</p>
+     </div>
+     <h3 style="margin-top: 32px; margin-bottom: 16px; color: #0F2440;">🌍 International Market Rates (ProZ &amp; Global Standards 2024)</h3>
+     <div style="background: #DFF5EC; padding: 24px; border-radius: 12px; margin-bottom: 24px;">
+      <p style="margin-bottom: 12px;"><strong>Translation (per word - USD):</strong></p>
+      <ul style="margin-left: 24px; line-height: 1.8; color: #0F2440;">
+       <li>Beginner (0-2 years): $0.05 - $0.08 per word</li>
+       <li>Intermediate (3-5 years): $0.08 - $0.12 per word</li>
+       <li>Expert (5+ years): $0.12 - $0.20+ per word</li>
+       <li>Specialized (Legal/Medical/Technical): $0.15 - $0.35+ per word</li>
+      </ul>
+      <p style="margin: 16px 0 12px 0;"><strong>Interpretation (per hour - USD):</strong></p>
+      <ul style="margin-left: 24px; line-height: 1.8; color: #0F2440;">
+       <li>Beginner: $40 - $75 per hour</li>
+       <li>Intermediate: $75 - $150 per hour</li>
+       <li>Expert: $150 - $300+ per hour</li>
+       <li>Conference Interpretation: $400 - $800+ per day</li>
+      </ul>
+      <p style="margin: 16px 0 12px 0;"><strong>Proofreading/Editing (per word - USD):</strong></p>
+      <ul style="margin-left: 24px; line-height: 1.8; color: #0F2440;">
+       <li>Beginner: $0.02 - $0.04 per word</li>
+       <li>Intermediate: $0.04 - $0.08 per word</li>
+       <li>Expert: $0.08 - $0.15+ per word</li>
+      </ul>
+      <p style="margin: 16px 0 12px 0;"><strong>Subtitling (per minute - USD):</strong></p>
+      <ul style="margin-left: 24px; line-height: 1.8; color: #0F2440;">
+       <li>Beginner: $1.50 - $3 per minute</li>
+       <li>Intermediate: $3 - $6 per minute</li>
+       <li>Expert: $6 - $12+ per minute</li>
+      </ul>
+      <p style="margin: 16px 0 12px 0;"><strong>Voice Over (per finished minute - USD):</strong></p>
+      <ul style="margin-left: 24px; line-height: 1.8; color: #0F2440;">
+       <li>Beginner: $20 - $40 per minute</li>
+       <li>Intermediate: $40 - $80 per minute</li>
+       <li>Expert: $80 - $150+ per minute</li>
+       <li>Broadcast/Commercial: $150 - $500+ per minute</li>
+      </ul>
+      <p style="margin: 16px 0 12px 0;"><strong>Transcription (per audio minute - USD):</strong></p>
+      <ul style="margin-left: 24px; line-height: 1.8; color: #0F2440;">
+       <li>Beginner: $1.50 - $2.50 per audio minute</li>
+       <li>Intermediate: $2.50 - $4.00 per audio minute</li>
+       <li>Expert: $4.00 - $6.00+ per audio minute</li>
+       <li>Specialized (Legal/Medical): $6.00 - $10.00+ per audio minute</li>
+      </ul>
+      <p style="margin-top: 20px; font-size: 13px; color: #5a6c7d; font-style: italic;">* International rates based on ProZ.com marketplace data, American Translators Association (ATA), and global industry benchmarks. Rates vary significantly by language pair, with rare language combinations commanding 2-3x higher rates.</p>
+     </div>
+     <div style="background: #fff3cd; padding: 24px; border-radius: 12px; margin-bottom: 24px; color: #856404;">
+      <h4 style="color: #856404; margin-bottom: 12px; font-size: 18px;">💡 Understanding Rate Differences</h4>
+      <ul style="margin: 0; padding-left: 24px; line-height: 1.8;">
+       <li><strong>Malaysian vs International:</strong> Malaysian rates (RM) reflect local market and cost of living. When converting to USD, Malaysian translators can be competitive globally while earning well locally.</li>
+       <li><strong>Language Pairs Matter:</strong> Rates for English↔Spanish are typically lower due to high competition, while English↔Malay, English↔Indonesian, or rare Asian language pairs command premium rates internationally.</li>
+       <li><strong>Platform vs Direct Clients:</strong> ProZ and Upwork rates are typically 20-40% lower than direct client rates due to platform fees and competition.</li>
+       <li><strong>Specialization Premium:</strong> Legal, medical, and technical translations command 30-100% higher rates than general content across all markets.</li>
+       <li><strong>Volume Discounts:</strong> Large projects (10,000+ words) typically receive 10-20% discounts, but total earnings are higher.</li>
+      </ul>
+     </div>
+     <h3 style="margin-bottom: 16px; color: #0F2440;">Pro Tips for Pricing</h3>
+     <div style="background: #DFF5EC; padding: 24px; border-radius: 12px; margin-bottom: 24px;">
+      <ul style="margin-left: 24px; line-height: 2; color: #0F2440;">
+       <li><strong>Specialization premium:</strong> Add 20-30% for technical fields (legal, medical, financial)</li>
+       <li><strong>Rush jobs:</strong> Charge 1.5x-2x for same-day or 24-hour turnaround</li>
+       <li><strong>Editing/proofreading:</strong> Typically 50-60% of translation rate</li>
+       <li><strong>Minimum project fee:</strong> Set a minimum (e.g., RM100) for small projects</li>
+       <li><strong>Volume discounts:</strong> Offer 10-15% off for large projects (10,000+ words)</li>
+       <li><strong>Regular clients:</strong> Consider retainer packages with slight discount</li>
+      </ul>
+     </div>
+      <h3 style="margin-top: 32px; margin-bottom: 16px; color: #0F2440;">Calculate Your Rate</h3>
       <form id="rate-calculator-form">
-       <div class="form-group"><label for="service-type">Service Type</label> <select id="service-type" required> <option value="">Select a service...</option> <option value="translation">Translation</option> <option value="interpretation">Interpretation</option> <option value="proofreading">Proofreading/Editing</option> <option value="subtitling">Subtitling/Captioning</option> <option value="voiceover">Voice Over</option> <option value="transcription">Transcription</option> </select>
+       <div class="form-group"><label for="service-type">Service Type</label> <select id="service-type" required> <option value="">Select service type</option> <option value="translation">Translation</option> <option value="interpretation">Interpretation</option> <option value="proofreading">Proofreading/Editing</option> <option value="subtitling">Subtitling/Captioning</option> <option value="voiceover">Voice Over</option> <option value="transcription">Transcription</option> </select>
        </div>
-       <div class="form-group"><label for="experience-level">Experience Level</label> <select id="experience-level" required> <option value="">Select your level...</option> <option value="beginner">Beginner (0-2 years)</option> <option value="intermediate">Intermediate (3-5 years)</option> <option value="expert">Expert (5+ years)</option> </select>
+       <div class="form-group"><label for="experience-level">Experience Level</label> <select id="experience-level" required> <option value="">Select your level</option> <option value="beginner">Beginner (0-2 years)</option> <option value="intermediate">Intermediate (3-5 years)</option> <option value="expert">Expert (5+ years)</option> </select>
        </div>
-       <div class="form-group" id="project-size-group" style="display: none;"><label for="project-size">Project Size (Optional)</label> <input type="number" id="project-size" placeholder="Enter project size" min="0">
+       <div class="form-group" id="project-size-group" style="display: none;"><label for="project-size">Project Size (Optional)</label> <input type="number" id="project-size" placeholder="e.g., 5000" min="1">
         <div class="hint-text" id="size-hint">
-         Enter the project size for a quote
+         Enter the number of words/minutes/hours for your project
         </div>
        </div>
        <div class="form-group"><label for="currency">Currency</label> <select id="currency"> <option value="MYR">MYR (RM)</option> <option value="USD">USD ($)</option> </select>
        </div>
        <div class="checkbox-group"><input type="checkbox" id="rush-job"> <label for="rush-job">Rush Job (+50%)</label>
        </div>
-       <div class="checkbox-group"><input type="checkbox" id="specialized"> <label for="specialized">Specialized Field (+30%)</label>
+       <div class="checkbox-group"><input type="checkbox" id="specialized"> <label for="specialized">Specialized Field (Legal, Medical, Technical - 1-2x rate)</label>
        </div><button type="submit" class="btn btn-primary">Calculate Rate</button>
        <div id="rate-output" class="output-box">
         <div class="output-header">
          <h4>Your Recommended Rate</h4>
         </div>
         <div class="output-content" id="rate-results"></div>
-        <p class="output-tip">💡 Tip: These rates are based on Malaysian market standards (ITBM, MTA) and industry research.</p>
+        <p class="output-tip">💡 Tip: These rates are based on Malaysian market standards (ITBM, MTA) and industry research.Adjust based on your location, portfolio, and client budget!</p>
        </div>
       </form>
      </div>
@@ -830,54 +941,60 @@
     <div class="tool-page-header">
      <div class="container">
       <h1>Pitch Generator</h1>
-      <p>Create compelling pitches tailored to your target clients</p>
+      <p>Create compelling outreach messages that win clients on WhatsApp, Email, LinkedIn, Social Media, Freelance Platform and more</p>
      </div>
     </div>
     <div class="container"><button class="btn btn-outline back-button" onclick="navigateTo('home')">← Back to Tools</button>
      <div class="how-to-section">
       <h2>How to Use</h2>
       <ol>
-       <li>Fill in your professional details</li>
-       <li>Enter information about your target client</li>
-       <li>Select the platform where you'll send the pitch</li>
-       <li>Click "Generate Pitch" to create your customized message</li>
+      <li><strong>Fill in your details:</strong> Enter your name, service type, years of experience and what makes you unique</li>
+      <li><strong>Add client information:</strong> Input the client/company name and their industry</li>
+      <li><strong>Choose your platform:</strong> Select where you'll send this pitch (WhatsApp, Email, LinkedIn, Social Media or Freelance Platform)</li>
+      <li><strong>Generate your pitch:</strong> Click the button to create a customized, professional pitch</li>
+      <li><strong>Copy and customize:</strong> Use the copy button and personalize the message before sending</li>
       </ol>
      </div>
      <div class="generator-section">
       <h2>Create Your Pitch</h2>
       <form id="pitch-form">
-       <h3 style="margin-top: 0; margin-bottom: 20px; font-size: 20px;">Your Information</h3>
-       <div class="form-group"><label for="your-name">Your Name</label> <input type="text" id="your-name" placeholder="Your Name" required>
-       </div>
-       <div class="form-group"><label for="your-service">Your Service</label> <select id="your-service" required> <option value="">Select your service...</option> <option value="Translation">Translation</option> <option value="Interpretation">Interpretation</option> <option value="Proofreading">Proofreading</option> <option value="Subtitling">Subtitling</option> <option value="Voice Over">Voice Over</option> <option value="Transcription">Transcription</option> </select>
-       </div>
-       <div class="form-group"><label for="your-experience">Years of Experience</label> <input type="number" id="your-experience" placeholder="3" min="0" required>
-       </div>
-       <h3 style="margin-top: 32px; margin-bottom: 20px; font-size: 20px;">Client Information</h3>
-       <div class="form-group"><label for="client-name">Client Name</label> <input type="text" id="client-name" placeholder="Company or Person Name" required>
-       </div>
-       <div class="form-group"><label for="client-industry">Client Industry</label> <input type="text" id="client-industry" placeholder="e.g., Healthcare, Technology, Legal" required>
-       </div>
-       <div class="form-group"><label for="platform">Platform</label> <select id="platform" required> <option value="">Where will you send this?</option> <option value="whatsapp">WhatsApp</option> <option value="email">Email</option> <option value="linkedin">LinkedIn</option> <option value="upwork">Upwork/Freelance Platform</option> <option value="social">Social Media (Instagram/Facebook)</option> </select>
-       </div>
-       <div class="form-group"><label for="unique-value">Your Unique Value (Optional)</label> <textarea id="unique-value" placeholder="What makes you different? E.g., Certified by XYZ, Specialized in medical translation, Native speaker..."></textarea>
-       </div><button type="submit" class="btn btn-primary">Generate Pitch</button>
-       <div id="pitch-output" class="output-box">
-        <div class="output-header">
-         <h4>Your Personalized Pitch</h4><button type="button" class="btn btn-secondary" onclick="copyToClipboard('pitch-text')">Copy</button>
-        </div>
-        <div class="output-content" id="pitch-text"></div>
-        <p class="output-tip">💡 Tip: Personalize this further by researching the client's recent projects or achievements!</p>
-       </div>
-      </form>
+      <div class="form-group">
+       <label for="your-name">Your Name *</label> <input type="text" id="your-name" placeholder="e.g., Aisha Rahman" required>
+      </div>
+      <div class="form-group">
+       <label for="your-service">Your Service *</label> <input type="text" id="your-service" placeholder="e.g., English-Malay Translation" required>
+      </div>
+      <div class="form-group">
+       <label for="your-experience">Years of Experience *</label> <input type="number" id="your-experience" placeholder="e.g., 3" required>
+      </div>
+      <div class="form-group">
+       <label for="client-name">Client/Company Name *</label> <input type="text" id="client-name" placeholder="e.g., ABC Marketing Agency" required>
+      </div>
+      <div class="form-group">
+       <label for="client-industry">Client's Industry *</label> <input type="text" id="client-industry" placeholder="e.g., Marketing, E-commerce, Education" required>
+      </div>
+      <div class="form-group">
+       <label for="platform">Platform *</label> <select id="platform" required> <option value="">Select platform</option> <option value="whatsapp">WhatsApp</option> <option value="email">Email</option> <option value="linkedin">LinkedIn</option> <option value="social">Social Media DM</option> <option value="upwork">Upwork Proposal</option> </select>
+      </div>
+      <div class="form-group">
+       <label for="unique-value">Your Unique Value (Optional)</label> <input type="text" id="unique-value" placeholder="e.g., Fast turnaround, Native speaker, Certified translator">
+      </div><button type="submit" class="btn btn-primary" style="width: 100%;">Generate My Pitch</button>
+     </form>
+     <div id="pitch-output" class="output-box">
+      <div class="output-header">
+       <h4>Your Generated Pitch:</h4><button class="btn btn-secondary copy-btn" onclick="copyToClipboard('pitch-text')" style="padding: 8px 16px; font-size: 14px;">Copy to Clipboard</button>
+      </div>
+      <div id="pitch-text" class="output-content"></div>
+      <p class="output-tip">💡 Remember: Customize this pitch to match your personality and the specific client needs!</p>
      </div>
     </div>
+   </div>
    </div><!-- FOLLOW-UP MESSAGES PAGE -->
    <div id="page-followup" class="page">
     <div class="tool-page-header">
      <div class="container">
-      <h1>Follow-Up Messages</h1>
-      <p>Professional templates for client communication</p>
+      <h1>Follow-Up Messages Generator</h1>
+      <p>Craft professional follow-up messages to maintain client relationships</p>
      </div>
     </div>
     <div class="container"><button class="btn btn-outline back-button" onclick="navigateTo('home')">← Back to Tools</button>
@@ -885,25 +1002,26 @@
       <h2>How to Use</h2>
       <ol>
        <li>Enter the client's name</li>
-       <li>Select the type of follow-up message you need</li>
-       <li>Add any specific context (optional)</li>
-       <li>Click "Generate Message" to create your follow-up</li>
+      <li>Select the type of follow-up (proposal, project completion, or general check-in)</li>
+      <li>Add any specific context or details</li>
+      <li>Click "Generate Message" to create your follow-up</li>
       </ol>
      </div>
      <div class="generator-section">
-      <h2>Create Follow-Up Message</h2>
-      <div class="form-group"><label for="fu-client">Client Name</label> <input type="text" id="fu-client" placeholder="Client Name">
+      <h2>Generate Follow-Up Message</h2>
+      <div class="form-group"><label for="fu-client">Client Name</label> <input type="text" id="fu-client" placeholder="e.g., Peter">
       </div>
-      <div class="form-group"><label for="fu-type">Message Type</label> <select id="fu-type"> <option value="proposal">Following Up on Proposal</option> <option value="completion">Project Completion Thank You</option> <option value="checkin">General Check-In</option> <option value="invoice">Payment Reminder</option> </select>
+      <div class="form-group"><label for="fu-type">Follow-Up Type</label> <select id="fu-type"> <option value="proposal">After Sending Proposal</option> <option value="completion">After Project Completion</option> <option value="checkin">General Check-In</option> <option value="invoice">Invoice Reminder</option> </select>
+     </div>
+     <div class="form-group"><label for="fu-context">Additional Context (Optional)</label> <textarea id="fu-context" placeholder="Any specific details to mention..."></textarea>
+     </div><button class="btn btn-primary" onclick="generateFollowUp()">Generate Message</button>
+     <div id="fu-output" class="output-box">
+      <div class="output-header">
+       <h4>Your Follow-Up Message</h4><button class="btn btn-secondary" onclick="copyToClipboard('fu-result')">Copy</button>
       </div>
-      <div class="form-group"><label for="fu-context">Additional Context (Optional)</label> <textarea id="fu-context" placeholder="Any specific details you want to mention..."></textarea>
-      </div><button class="btn btn-primary" onclick="generateFollowUp()">Generate Message</button>
-      <div id="fu-output" class="output-box">
-       <div class="output-header">
-        <h4>Your Follow-Up Message</h4><button class="btn btn-secondary" onclick="copyToClipboard('fu-result')">Copy</button>
-       </div>
-       <div class="output-content" id="fu-result"></div>
-       <p class="output-tip">💡 Tip: Always personalize with specific project details!</p>
+      <div class="output-content" id="fu-result"></div>
+      
+       <p class="output-tip">💡 Tip: Send follow-ups 3-5 days after initial contact and always personalize with specific project details!</p>
       </div>
      </div>
     </div>
@@ -1034,7 +1152,7 @@
     <div class="tool-page-header">
      <div class="container">
       <h1>Business Planning Worksheets</h1>
-      <p>Downloadable templates to organize and grow your freelance business</p>
+      <p>Hands-on worksheets to plan your services, build your pitch, and start applying for jobs</p>
      </div>
     </div>
     <div class="container"><button class="btn btn-outline back-button" onclick="navigateTo('home')">← Back to Tools</button>
